@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="main">
+        <header className="header">
+          <h1>COVID-19 Data Tracker</h1>
+
+          <FormControl variant="filled">
+            <InputLabel>Region</InputLabel>
+            <Select>
+              <MenuItem>Worldwide</MenuItem>
+              <MenuItem>China</MenuItem>
+              <MenuItem>USA</MenuItem>
+              <MenuItem>UK</MenuItem>
+            </Select>
+          </FormControl>
+        </header>
+      </div>
+
+      <div className="sidebar"></div>
     </div>
   );
-}
+};
 
 export default App;
