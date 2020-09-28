@@ -1,17 +1,18 @@
 import React from "react";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import { Card, CardContent } from "@material-ui/core";
 
 const position = [51.505, -0.09];
+const zoom = 13;
 
-const MapScreen = () => {
+const Map = () => {
   return (
     <div className="map">
       <Card>
         <CardContent>
-          <Map center={position} zoom={13}>
+          <LeafletMap center={position} zoom={zoom}>
             <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={position}>
@@ -19,11 +20,11 @@ const MapScreen = () => {
                 A pretty CSS3 popup. <br /> Easily customizable.
               </Popup>
             </Marker>
-          </Map>
+          </LeafletMap>
         </CardContent>
       </Card>
     </div>
   );
 };
 
-export default MapScreen;
+export default Map;
