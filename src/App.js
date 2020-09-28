@@ -1,28 +1,29 @@
 import React from "react";
 import "./App.css";
-import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
+import Cards from "./components/Cards";
+import Header from "./components/Header";
+import MapScreen from "./components/MapScreen";
+import Chart from "./components/Chart";
+import ListScreen from "./components/ListScreen";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="container">
-      <div className="main">
-        <header className="header">
-          <h1>COVID-19 Data Tracker</h1>
+    <>
+      <div className="container">
+        <div className="main">
+          <Header />
+          <Cards />
+          <MapScreen />
+        </div>
 
-          <FormControl variant="filled">
-            <InputLabel>Region</InputLabel>
-            <Select>
-              <MenuItem>Worldwide</MenuItem>
-              <MenuItem>China</MenuItem>
-              <MenuItem>USA</MenuItem>
-              <MenuItem>UK</MenuItem>
-            </Select>
-          </FormControl>
-        </header>
+        <div className="sidebar">
+          <Chart />
+          <ListScreen />
+        </div>
       </div>
-
-      <div className="sidebar"></div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
