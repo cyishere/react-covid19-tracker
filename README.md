@@ -2,7 +2,10 @@
 
 ## notes
 
-API: [https://disease.sh/](https://disease.sh/)
+API:
+
+- [https://disease.sh/](https://disease.sh/)
+- [https://covid19.mathdro.id/api](https://covid19.mathdro.id/api)
 
 - red: `#EE220C`
 - green: `#1DB100`
