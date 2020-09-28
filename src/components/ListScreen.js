@@ -7,59 +7,34 @@ import {
   ListItemText,
 } from "@material-ui/core";
 
-const ListScreen = () => {
+const ListScreen = ({ data }) => {
+  // if (!data.length) {
+  //   return "Loading...";
+  // }
+
   return (
     <div className="list-container">
       <Card>
         <CardContent>
           <h2>Cases by Country/Region</h2>
-          <List className="list">
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="7,079,689" secondary="USA" />
-            </ListItem>
-          </List>
+          {!data.length ? (
+            <List className="list">
+              <ListItem>Loading...</ListItem>
+            </List>
+          ) : (
+            <List className="list">
+              {data.map((region, i) => (
+                <ListItem key={i}>
+                  <ListItemText
+                    primary={region.confirmed.value
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    secondary={region.name}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          )}
         </CardContent>
       </Card>
     </div>
