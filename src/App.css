@@ -13,6 +13,8 @@
   --clr-light-grey: #edefef;
   --clr-text-secondary: #929292;
   --clr-text-primary: #333333;
+  --clr-brown: rgb(102, 60, 0);
+  --clr-light-orange: rgb(255, 244, 229);
 }
 
 html {
@@ -31,11 +33,15 @@ body {
   grid-gap: 2rem;
 }
 
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+}
+.MuiFormControl-root {
+  min-width: 12rem;
 }
 
 /* Cards */
@@ -99,4 +105,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Utils */
+.mb-20 {
+  margin-bottom: 2rem;
+}
+.alert {
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.4rem;
+}
+.alert.warning {
+  color: var(--clr-brown);
+  background-color: var(--clr-light-orange);
 }

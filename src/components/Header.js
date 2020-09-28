@@ -6,15 +6,17 @@ const Header = () => {
     <header className="header">
       <h1>COVID-19 Data Tracker</h1>
 
-      <FormControl variant="filled">
-        <InputLabel>Region</InputLabel>
-        <Select>
-          <MenuItem>Worldwide</MenuItem>
-          <MenuItem>China</MenuItem>
-          <MenuItem>USA</MenuItem>
-          <MenuItem>UK</MenuItem>
-        </Select>
-      </FormControl>
+      <div className="selector">
+        <FormControl variant="filled">
+          <InputLabel id="selectorLabel">Country/Region</InputLabel>
+          <Select labelId="selectorLabel" id="selector" defaultValue="">
+            <MenuItem value="">Worldwide</MenuItem>
+            <MenuItem>China</MenuItem>
+            <MenuItem>USA</MenuItem>
+            <MenuItem>UK</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
     </header>
   );
 };
