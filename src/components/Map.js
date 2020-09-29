@@ -2,8 +2,8 @@ import React from "react";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import { Card, CardContent } from "@material-ui/core";
 
-const position = [51.505, -0.09];
-const zoom = 13;
+const position = [34.80746, -40.4796];
+const zoom = 3;
 
 const Map = () => {
   return (

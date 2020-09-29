@@ -26,10 +26,10 @@ const ListScreen = ({ data }) => {
               {data.map((region, i) => (
                 <ListItem key={i}>
                   <ListItemText
-                    primary={region.confirmed.value
+                    primary={region.cases
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                    secondary={region.name}
+                    secondary={region.country}
                   />
                 </ListItem>
               ))}

@@ -32,3 +32,55 @@ API:
 
 - [React COVID Tracker](https://github.com/CleverProgrammers/react-covid-tracker)
 - [COVID-19 Tracker](https://github.com/cyishere/covid-19-tracker)
+
+---
+
+I used this API `https://covid19.mathdro.id/api` at the beginning which made creating the 'Cases by Country/Region' list quite inconvenient, but because of this I learned a lot of **Promise**. Here's the code:
+
+```js
+import axios from "axios";
+
+const url = "https://covid19.mathdro.id/api";
+
+// Fetch data by region
+const FetchByRegion = async (name) => {
+  try {
+    const {
+      data: { confirmed, recovered, deaths },
+    } = await axios.get(`${url}/countries/${name}`);
+    return {
+      name,
+      confirmed,
+      recovered,
+      deaths,
+    };
+  } catch (error) {
+    console.log("error", error.message);
+  }
+};
+
+// Fetch data for regions
+const fetchRegionData = async () => {
+  try {
+    const {
+      data: { countries },
+    } = await axios.get(`${url}/countries`);
+
+    const regionNames = countries
+      .filter((country) => country.name !== "Gambia")
+      .map((country) => country.name);
+
+    // let regionDatas = [];
+
+    const regionDatas = regionNames.map(async (name) => {
+      return await FetchByRegion(name);
+    });
+
+    return Promise.all(regionDatas);
+  } catch (error) {
+    console.log("error", error.message);
+  }
+};
+
+export { fetchRegionData };
+```

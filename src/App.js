@@ -21,6 +21,7 @@ const App = () => {
     fetchBasicData();
 
     const fetchForRegions = async () => {
+      // setListData(await fetchRegionData());
       setListData(await fetchRegionData());
     };
     fetchForRegions();

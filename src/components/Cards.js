@@ -3,9 +3,9 @@ import { Grid } from "@material-ui/core";
 import CardItem from "./CardItem";
 
 const Cards = ({ data }) => {
-  const { confirmed, recovered, deaths, lastUpdate } = data;
+  const { cases, recovered, deaths, updated } = data;
 
-  if (!confirmed) {
+  if (!cases) {
     return <div className="alert warning mb-20">Loading...</div>;
   }
 
@@ -14,8 +14,8 @@ const Cards = ({ data }) => {
       <Grid container spacing={2}>
         <Grid item xs={4}>
           <CardItem
-            subject={confirmed}
-            lastUpdate={lastUpdate}
+            subject={cases}
+            lastUpdate={updated}
             cardTitle="Confirmed"
             cardClass="confirmed"
             cardSubtitle="Number of active cases from COVID-19."
@@ -25,7 +25,7 @@ const Cards = ({ data }) => {
         <Grid item xs={4}>
           <CardItem
             subject={recovered}
-            lastUpdate={lastUpdate}
+            lastUpdate={updated}
             cardTitle="Recovered"
             cardClass="recovered"
             cardSubtitle="Number of recoveries from COVID-19."
@@ -35,7 +35,7 @@ const Cards = ({ data }) => {
         <Grid item xs={4}>
           <CardItem
             subject={deaths}
-            lastUpdate={lastUpdate}
+            lastUpdate={updated}
             cardTitle="Deaths"
             cardClass="deaths"
             cardSubtitle="Number of deaths caused by COVID-19."
