@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Cards from "./components/Cards";
 import Header from "./components/Header";
-import MapScreen from "./components/MapScreen";
+import Map from "./components/Map";
 import Chart from "./components/Chart";
 import ListScreen from "./components/ListScreen";
 import Footer from "./components/Footer";
+import "leaflet/dist/leaflet.css";
 
 import { fetchAll, fetchRegionData } from "./api";
 
@@ -20,6 +21,7 @@ const App = () => {
     fetchBasicData();
 
     const fetchForRegions = async () => {
+      // setListData(await fetchRegionData());
       setListData(await fetchRegionData());
     };
     fetchForRegions();
@@ -31,7 +33,7 @@ const App = () => {
         <div className="main">
           <Header />
           <Cards data={cardsData} />
-          <MapScreen />
+          <Map />
         </div>
 
         <div className="sidebar">

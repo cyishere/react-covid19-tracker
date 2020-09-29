@@ -16,7 +16,7 @@ const CardItem = ({
           {cardTitle}
         </Typography>
         <Typography className="card-main" variant="h5" component="h2">
-          <CountUp start={0} end={subject.value} duration={2.5} separator="," />
+          <CountUp start={0} end={subject} duration={2.5} separator="," />
         </Typography>
         <Typography color="textSecondary">
           Update @ {new Date(lastUpdate).toDateString()}
