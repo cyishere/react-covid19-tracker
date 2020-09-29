@@ -2,10 +2,11 @@
  * @Author: Chen Yang
  * @Date: 2020-09-28 16:24:26
  * @Last Modified by: Chen Yang
- * @Last Modified time: 2020-09-29 19:47:18
+ * @Last Modified time: 2020-09-29 20:28:39
  */
 import axios from "axios";
-const basicUrl = "https://disease.sh/v3/covid-19";
+const basicUrl = "https://disease.sh/v3/covid-19",
+  extraUrl = "https://covid19.mathdro.id/api";
 
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
@@ -34,4 +35,17 @@ const fetchRegionData = async () => {
   }
 };
 
-export { fetchAll, fetchRegionData };
+// Fetch daily data
+const fetchDailyData = async () => {
+  const { data } = await axios.get(`${extraUrl}/daily`);
+
+  const modifiedData = data.map((daily) => ({
+    confirmed: daily.confirmed.total,
+    deaths: daily.deaths.total,
+    date: daily.reportDate,
+  }));
+
+  return modifiedData;
+};
+
+export { fetchAll, fetchRegionData, fetchDailyData };

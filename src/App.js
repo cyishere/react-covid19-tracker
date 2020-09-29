@@ -8,11 +8,12 @@ import ListScreen from "./components/ListScreen";
 import Footer from "./components/Footer";
 import "leaflet/dist/leaflet.css";
 
-import { fetchAll, fetchRegionData } from "./api";
+import { fetchAll, fetchDailyData, fetchRegionData } from "./api";
 
 const App = () => {
   const [cardsData, setCardsData] = useState({});
   const [listData, setListData] = useState([]);
+  const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
     const fetchBasicData = async () => {
@@ -25,19 +26,24 @@ const App = () => {
       setListData(await fetchRegionData());
     };
     fetchForRegions();
+
+    const fetchForDaily = async () => {
+      setDailyData(await fetchDailyData());
+    };
+    fetchForDaily();
   }, []);
 
   return (
     <>
       <div className="container">
         <div className="main">
-          <Header />
+          <Header data={listData} />
           <Cards data={cardsData} />
           <Map />
         </div>
 
         <div className="sidebar">
-          <Chart />
+          <Chart dailyData={dailyData} />
           <ListScreen data={listData} />
         </div>
       </div>
