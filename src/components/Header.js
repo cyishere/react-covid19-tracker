@@ -1,7 +1,7 @@
 import React from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 
-const Header = ({ data }) => {
+const Header = ({ data, handleRegionData, currentVal }) => {
   return (
     <header className="header">
       <h1>COVID-19 Data Tracker</h1>
@@ -12,11 +12,14 @@ const Header = ({ data }) => {
           <Select
             labelId="selectorLabel"
             id="selector"
-            defaultValue="Worldwide"
+            onChange={(e) => handleRegionData(e.target.value)}
+            value={currentVal}
           >
             <MenuItem value="Worldwide">Worldwide</MenuItem>
-            {data.map(({ country, i }) => (
-              <MenuItem key={i}>{country}</MenuItem>
+            {data.map(({ country }, i) => (
+              <MenuItem key={i} value={country}>
+                {country}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>

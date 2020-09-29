@@ -2,7 +2,7 @@
  * @Author: Chen Yang
  * @Date: 2020-09-28 16:24:26
  * @Last Modified by: Chen Yang
- * @Last Modified time: 2020-09-29 20:28:39
+ * @Last Modified time: 2020-09-29 21:19:34
  */
 import axios from "axios";
 const basicUrl = "https://disease.sh/v3/covid-19",
@@ -37,15 +37,39 @@ const fetchRegionData = async () => {
 
 // Fetch daily data
 const fetchDailyData = async () => {
-  const { data } = await axios.get(`${extraUrl}/daily`);
+  try {
+    const { data } = await axios.get(`${extraUrl}/daily`);
 
-  const modifiedData = data.map((daily) => ({
-    confirmed: daily.confirmed.total,
-    deaths: daily.deaths.total,
-    date: daily.reportDate,
-  }));
+    const modifiedData = data.map((daily) => ({
+      confirmed: daily.confirmed.total,
+      deaths: daily.deaths.total,
+      date: daily.reportDate,
+    }));
 
-  return modifiedData;
+    return modifiedData;
+  } catch (error) {
+    console.log("error", error.message);
+  }
 };
 
-export { fetchAll, fetchRegionData, fetchDailyData };
+// Fetch one region data
+const fetchOneRegionData = async (region) => {
+  try {
+    const { data } = await axios.get(
+      `${proxyUrl}${basicUrl}/countries/${region}`
+    );
+
+    return {
+      country: data.country,
+      countryInfo: data.countryInfo,
+      cases: data.cases,
+      recovered: data.recovered,
+      deaths: data.deaths,
+      updated: data.updated,
+    };
+  } catch (error) {
+    console.log("error", error.message);
+  }
+};
+
+export { fetchAll, fetchRegionData, fetchDailyData, fetchOneRegionData };
