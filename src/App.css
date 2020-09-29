@@ -99,6 +99,11 @@ body {
   color: var(--clr-blue);
   font-size: 2rem;
 }
+.list-item:hover,
+.list-item.active {
+  background-color: var(--clr-light-grey);
+  cursor: pointer;
+}
 
 /* Footer */
 .footer {
@@ -110,7 +115,7 @@ body {
 
 /* Utils */
 .mb-20 {
-  margin-bottom: 2rem;
+  margin-bottom: 2rem !important;
 }
 .alert {
   padding: 0.6rem 1.6rem;

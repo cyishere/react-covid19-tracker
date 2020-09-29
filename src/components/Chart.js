@@ -1,42 +1,73 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
-import { Card, CardContent } from "@material-ui/core";
+import { Line, Bar } from "react-chartjs-2";
+import { Card, CardContent, Typography } from "@material-ui/core";
 
-const data = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
-  datasets: [
-    {
-      label: "My First dataset",
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
-      borderCapStyle: "butt",
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: "miter",
-      pointBorderColor: "rgba(75,192,192,1)",
-      pointBackgroundColor: "#fff",
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(75,192,192,1)",
-      pointHoverBorderColor: "rgba(220,220,220,1)",
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40],
-    },
-  ],
-};
+const Chart = ({ dailyData, regionData, chartLoading }) => {
+  const lineChart = dailyData.length ? (
+    <>
+      <h2>Worldwide Daily Cases</h2>
+      <Line
+        data={{
+          labels: dailyData.map(({ date }) => date),
+          datasets: [
+            {
+              data: dailyData.map(({ confirmed }) => confirmed),
+              label: "Cases",
+              borderColor: "#00a2ff",
+              backgroundColor: "rgba(70, 171, 250, .7)",
+              fill: true,
+            },
+            {
+              data: dailyData.map(({ deaths }) => deaths),
+              label: "Deaths",
+              borderColor: "#ee220c",
+              fill: true,
+            },
+          ],
+        }}
+      />
+    </>
+  ) : (
+    <div>Loading...</div>
+  );
 
-const Chart = () => {
+  const barChart = chartLoading ? (
+    <div>Loading...</div>
+  ) : regionData.country ? (
+    <>
+      <Typography variant="h5" component="h2">
+        Current State in {regionData.country}
+      </Typography>
+      <Typography color="textSecondary" className="mb-20">
+        Updated @ {new Date(regionData.updated).toDateString()}
+      </Typography>
+      <Bar
+        data={{
+          labels: ["Cases", "Recovered", "Deaths"],
+          datasets: [
+            {
+              label: "People",
+              backgroundColor: [
+                "rgba(70, 171, 250, .7)",
+                "rgba(54,177,0, 0.7)",
+                "rgba(238,34,13, 0.7)",
+              ],
+              data: [regionData.cases, regionData.recovered, regionData.deaths],
+            },
+          ],
+        }}
+        options={{
+          legend: { display: false },
+          title: { display: false },
+        }}
+      />
+    </>
+  ) : null;
+
   return (
     <div className="chart">
       <Card>
-        <CardContent>
-          <h2>Daily Cases</h2>
-          <Line data={data} />
-        </CardContent>
+        <CardContent>{regionData.country ? barChart : lineChart}</CardContent>
       </Card>
     </div>
   );

@@ -7,7 +7,7 @@ import {
   ListItemText,
 } from "@material-ui/core";
 
-const ListScreen = ({ data }) => {
+const ListScreen = ({ data, handleRegionData }) => {
   // if (!data.length) {
   //   return "Loading...";
   // }
@@ -24,7 +24,11 @@ const ListScreen = ({ data }) => {
           ) : (
             <List className="list">
               {data.map((region, i) => (
-                <ListItem key={i}>
+                <ListItem
+                  key={i}
+                  className={`list-item list-of_${region.country}`}
+                  onClick={() => handleRegionData(region.country)}
+                >
                   <ListItemText
                     primary={region.cases
                       .toString()
