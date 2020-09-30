@@ -2,7 +2,7 @@
  * @Author: Chen Yang
  * @Date: 2020-09-28 16:24:26
  * @Last Modified by: Chen Yang
- * @Last Modified time: 2020-09-29 21:19:34
+ * @Last Modified time: 2020-09-30 09:46:28
  */
 import axios from "axios";
 const basicUrl = "https://disease.sh/v3/covid-19",
@@ -27,7 +27,11 @@ const fetchRegionData = async () => {
   try {
     const { data } = await axios.get(`${proxyUrl}${basicUrl}/countries`);
     return data.map((item) => {
-      return { cases: item.cases, country: item.country };
+      return {
+        cases: item.cases,
+        country: item.country,
+        countryInfo: item.countryInfo,
+      };
     });
     // return { cases, country };
   } catch (error) {
