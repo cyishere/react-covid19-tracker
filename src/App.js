@@ -30,7 +30,8 @@ const App = () => {
     fetchBasicData();
 
     const fetchForRegions = async () => {
-      setListData(await fetchRegionData());
+      const dataInList = await fetchRegionData();
+      setListData(dataInList.sort((a, b) => b.cases - a.cases));
     };
     fetchForRegions();
 
