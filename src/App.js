@@ -22,6 +22,7 @@ const App = () => {
   const [regionData, setRegionData] = useState({});
   const [chartLoading, setChartLoading] = useState(false);
   const [currentVal, setCurrentVal] = useState("Worldwide");
+  const [center, setCenter] = useState([34.80746, -40.4796]);
 
   useEffect(() => {
     const fetchBasicData = async () => {
@@ -75,7 +76,7 @@ const App = () => {
             currentVal={currentVal}
           />
           <Cards data={cardsData} />
-          <Map />
+          <Map center={center} listData={listData} />
         </div>
 
         <div className="sidebar">
