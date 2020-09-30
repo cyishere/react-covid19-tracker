@@ -26,6 +26,14 @@ body {
   background-color: var(--clr-light-grey);
 }
 
+a {
+  color: var(--clr-blue);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--clr-green);
+}
+
 .container {
   margin: 5rem 2% 0 2%;
   display: grid;
