@@ -32,14 +32,9 @@ API:
 
 - Popup auto open: [https://stackblitz.com/edit/react-awtgn6](https://stackblitz.com/edit/react-awtgn6)
 
-## screenshot
-
-![screenshot](./src/images/screenshot.jpeg)
-
-## read
+## materials
 
 - [React COVID Tracker](https://github.com/CleverProgrammers/react-covid-tracker)
-- [COVID-19 Tracker](https://github.com/cyishere/covid-19-tracker)
 
 ---
 
