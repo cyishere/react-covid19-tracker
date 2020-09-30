@@ -13,7 +13,7 @@ const CardItem = ({
     <Card className={cardClass}>
       <CardContent>
         <Typography className="card-title" color="textSecondary" gutterBottom>
-          {cardTitle}
+          Worldwide {cardTitle}
         </Typography>
         <Typography className="card-main" variant="h5" component="h2">
           <CountUp start={0} end={subject} duration={2.5} separator="," />
