@@ -76,17 +76,19 @@ body {
 /* Map */
 .map .leaflet-container {
   width: 100%;
-  height: 50rem;
+  height: 52rem;
 }
 
 /* Chart */
 .chart {
+  height: 32rem;
   margin-bottom: 2rem;
 }
 
 /* List */
 .list {
   max-height: 60rem;
+  height: 40rem;
   overflow: auto;
 }
 .MuiListItemText-multiline {
@@ -124,4 +126,25 @@ body {
 .alert.warning {
   color: var(--clr-brown);
   background-color: var(--clr-light-orange);
+}
+
+.popup-info {
+  overflow: hidden;
+}
+.popup-info img {
+  width: 100%;
+}
+.popup-info .confirmed,
+.popup-info .recovered,
+.popup-info .deaths {
+  border-bottom: 0;
+}
+.popup-info .confirmed strong {
+  color: var(--clr-blue);
+}
+.popup-info .recovered strong {
+  color: var(--clr-green);
+}
+.popup-info .deaths strong {
+  color: var(--clr-red);
 }

@@ -2,7 +2,7 @@
  * @Author: Chen Yang
  * @Date: 2020-09-28 16:24:26
  * @Last Modified by: Chen Yang
- * @Last Modified time: 2020-09-30 09:46:28
+ * @Last Modified time: 2020-09-30 20:05:45
  */
 import axios from "axios";
 const basicUrl = "https://disease.sh/v3/covid-19",
@@ -29,11 +29,12 @@ const fetchRegionData = async () => {
     return data.map((item) => {
       return {
         cases: item.cases,
+        recovered: item.recovered,
+        deaths: item.deaths,
         country: item.country,
         countryInfo: item.countryInfo,
       };
     });
-    // return { cases, country };
   } catch (error) {
     console.log("error", error.message);
   }
