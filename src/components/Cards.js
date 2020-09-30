@@ -12,7 +12,7 @@ const Cards = ({ data }) => {
   return (
     <div className="cards">
       <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid item xs>
           <CardItem
             subject={cases}
             lastUpdate={updated}
@@ -22,7 +22,7 @@ const Cards = ({ data }) => {
           />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs>
           <CardItem
             subject={recovered}
             lastUpdate={updated}
@@ -32,7 +32,7 @@ const Cards = ({ data }) => {
           />
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs>
           <CardItem
             subject={deaths}
             lastUpdate={updated}

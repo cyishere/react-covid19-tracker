@@ -1,5 +1,11 @@
 # COVID-19 Data Tracker
 
+A React app to show the data of Covid-19 by each country/region.
+
+![screenshot-01](./src/images/screenshot-01.gif)
+
+![screenshot-02](./src/images/screenshot-02.gif)
+
 ## notes
 
 API:
