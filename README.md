@@ -24,6 +24,8 @@ API:
 
 **NOTE:** Need to give `.leaflet-container` a height & a width, otherwise it won't show up. And also need to add the default style of leaflet - `import "leaflet/dist/leaflet.css";`.
 
+- Popup auto open: [https://stackblitz.com/edit/react-awtgn6](https://stackblitz.com/edit/react-awtgn6)
+
 ## screenshot
 
 ![screenshot](./src/images/screenshot.jpeg)
