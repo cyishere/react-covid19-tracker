@@ -3,7 +3,9 @@ import { Line, Bar } from "react-chartjs-2";
 import { Card, CardContent, Typography } from "@material-ui/core";
 
 const Chart = ({ dailyData, regionData, chartLoading }) => {
-  const lineChart = dailyData.length ? (
+  const lineChart = !dailyData ? (
+    <div>Something wrong with the API...</div>
+  ) : dailyData.length ? (
     <>
       <h2>Worldwide Daily Cases</h2>
       <Line
